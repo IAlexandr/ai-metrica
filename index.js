@@ -2,10 +2,12 @@ var express = require('express');
 var http = require('http');
 var session = require('express-session');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 var auth = require('./lib/auth');
 var routers = require('./lib/routers');
 
 const app = express();
+app.use(bodyParser.json({ limit: '1024mb' }));
 app.set('json spaces', 2);
 const httpServer = http.Server(app);
 app.use(cors({origin: true}));
